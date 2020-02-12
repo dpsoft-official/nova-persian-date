@@ -12,7 +12,7 @@
                     :initial-value="persianDate"
                     v-model="value"
             ></date-picker>
-
+            <span class="text-80 text-sm ml-2">({{ userTimezone }})</span>
         </template>
     </default-field>
 </template>

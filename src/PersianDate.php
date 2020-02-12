@@ -13,11 +13,13 @@ class PersianDate extends Field
     public function __construct($name, $attribute = null, callable $resolveCallback = null)
     {
         parent::__construct($name, $attribute, $resolveCallback ?? function ($value) {
-                if (!$value instanceof DateTimeInterface) {
-                    throw new Exception("Date field must cast to 'date' in Eloquent model.");
-                }
+                if (! is_null($value)) {
+                    if ($value instanceof DateTimeInterface) {
+                        return $value->format('Y-m-d');
+                    }
 
-                return $value->format('Y-m-d');
+                    throw new Exception("DateTime field must cast to 'datetime' in Eloquent model.");
+                }
             });
     }
 
