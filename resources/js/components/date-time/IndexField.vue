@@ -12,6 +12,7 @@
                 if (this.field.value) {
                     return jMoment(this.field.value).format(this.field.format || 'jYYYY/jMM/jDD HH:mm:ss');
                 }
+                return '—';
             }
         }
     }
