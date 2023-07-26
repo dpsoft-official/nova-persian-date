@@ -18,5 +18,15 @@ jobs:
         with:
           node-version: 16
       - run: npm install
-      - run: npm run prod
+      - run: npm run production
+      - name: Commit changes
+        run: |
+          git config --global user.email "sadeghpm@gmail.com"
+          git config --global user.name "SadeghPM"
+          git add .
+          git commit -m "Build project"
 
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
